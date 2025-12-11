@@ -1,28 +1,43 @@
-> **Note of Development:**  
-> This hardware module is under active development. File and directory structures, naming conventions, and documentation formats may change as the design evolves.  
-> 
-> - **File Naming:**  
->   - Use capital letters and underscores only.  
->   - Start filenames with `unit_<filename>_v_<version>_<description>.<ext>`.  
->   - Example: `unit_icp10111_barometric_pressure_sensor_v_1_0_0.png`
->   - Schematic: `schematic_v_<version>_<description>.<ext>` (e.g., `schematic_v_1_0_0_icp10111_barometric_pressure_sensor.png`)
->   - Topology: `unit_topology_v_<version>_<description>.<ext>`
->   - Dimensions: `unit_dimension_v_<version>_<description>.<ext>`
-> 
-> - **README Structure:**  
->   - Hardware overview  
->   - Pinout and connector layout  
->   - Dimensions and topology  
->   - Functional description  
->   - Applications  
->   - References  
-> 
-> Please refer to the latest commit history for updates and changes.
-
 # Hardware
 
 <div align="center">
-<a href="{{schematic_url}}"><img src="resources/Schematics_icon.jpg?raw=false" width="200px"><br/>Schematic</a>
+<a href="./unit_schematic_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf"><img src="resources/Schematics_icon.jpg?raw=false" width="200px"><br/>Schematic</a>
+</div>
+
+## Key Technical Specifications
+
+<div align="center">
+
+| **Parameter** |           **Description**            | **Min** | **Max** | **Unit** |
+|:-------------:|:------------------------------------:|:-------:|:-------:|:--------:|
+|      Vin      | Input voltage to power on the module |  1.65   |   5.5   |    V     |
+|      Vih      |       High-level input voltage       | 0.7xVin | Vcc+0.5 |    V     |
+|      Vil      |       Low-level input voltage        |  -0.5   | 0.3xVin |    V     |
+|      Icc      |            Supply Current            |  -100   |   100   |    mA    |
+|      Ii       |            Input Current             |  -0.5   |    7    |    mA    |
+|      Io       |            Output Current            |   -25   |    -    |    mA    |
+|     fscl      |         I2C clock frequency          |    0    |   400   |   kHz    |
+
+</div>
+
+### I2C Address Selection
+
+The address is selected via Dip Switch on board:
+
+<div align="center">
+
+| **A2** | **A1** | **A0** | **Address** |
+|:------:|:------:|:------:|:-----------:|
+|   L    |   L    |   L    |    0x70     |
+|   L    |   L    |   H    |    0x71     |
+|   L    |   H    |   L    |    0x72     |
+|   L    |   H    |   H    |    0x73     |
+|   H    |   L    |   L    |    0x74     |
+|   H    |   L    |   H    |    0x75     |
+|   H    |   H    |   L    |    0x76     |
+|   H    |   H    |   H    |    0x77     |
+
+
 </div>
 
 ## Pinout
@@ -41,32 +56,6 @@
 
 </div>
 
-## Dimensions
-
-<div align="center">
-<a href="./resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png"><img src="./resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png" width="500px"><br/> Dimensions</a>
-</div>
-
-## Topology
-
-<div align="center">
-
-<div align="center">
-<a href="./resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png"><img src="./resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png" width="500px"><br/> Topology</a>
-<br/>
-<br/>
-<br/>
-
-| Ref. | Description                              |
-|------|------------------------------------------|
-| IC1  | {{sensor_description}}                   |
-| L1   | Power On LED                             |
-| U1   | {{regulator_description}}                | 
-| JP1  | 2.54 mm Castellated Holes                |
-| J1   | QWIIC Connector (JST 1 mm pitch) for I2C |
-
-</div>
-
 ## Pin & Connector Layout
 | Pin   | Voltage Level | Function                                                  |
 |-------|---------------|-----------------------------------------------------------|
@@ -77,14 +66,37 @@
 
 > **Note:** The module also includes a Qwiic/STEMMA QT connector carrying the same four signals (VCC, GND, SDA, SCL) for effortless daisy-chaining.
 
-## Functional Description
+## Topology
 
-{{functional_description}}
+<div align="center">
+<a href="./resources/unit_topology_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png"><img src="./resources/unit_topology_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" width="650px"><br/> Topology</a>
+<br/>
+<br/>
+<br/>
 
-## Applications
+| Ref.           | Description                         |
+|----------------|-------------------------------------|
+| IC1            | TCA9548A                            |
+| J1 & J6        | Main I2C device QWIIC connector     |
+| J2-J5 & J7-J10 | QWIIC Connector for each channel    |
+| JP1 & JP2      | 2.54 mm Castellated Holes           |
+| JP3            | Voltage selector for all channels   |
+| SW1            | Dip Switch for address selection    |
+| SB1            | SDA Pull-Up Bridge                  |
+| SB2            | SCL Pull-Up Bridge                  |
+| SB3            | Solder bridge to join VCC2 with VCC |
+| SB4            | Solder bridge to join VCC1 with VCC |
+| SB5            | Solder bridge address selection     |
 
-{{applications_list}}
+
+</div>
+
+## Dimensions
+
+<div align="center">
+<a href="./resources/unit_dimension_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png"><img src="./resources/unit_dimension_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" width="650px"><br/> Dimensions</a>
+</div>
 
 # References
 
-- [{{datasheet_name}}]({{datasheet_url}})
+- <a href="https://www.ti.com/lit/ds/symlink/tca9548a.pdf?ts=1765490049577&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252Fes-mx%252FTCA9548A">TCA9548A Datasheet</a>
