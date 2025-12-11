@@ -178,10 +178,12 @@
                     <main>
                         <h1 id="devlab-i2c-tca9548a-multiplexer-module"><a class="header" href="#devlab-i2c-tca9548a-multiplexer-module">DevLab: I2C TCA9548A Multiplexer Module</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p>This is a modular development board based on a popular microcontroller, designed for rapid prototyping and educational use. It features flexible power options, modern connectivity, and user-friendly interfaces. An integrated LED matrix allows for simple visual feedback and display.</p>
+<p>The TCA9548A is a 1-to-8 bidirectional translating switch controlled via the I2C bus. It is designed to resolve I2C address conflicts and expand the fan-out capability of a primary I2C bus master.</p>
+<p>The device consists of eight separate downstream channels (SCL0/SDA0 through SCL7/SDA7) that can be selected individually or in any combination via a programmable Dip Switch. This allows a master device to communicate with multiple peripheral devices sharing the same I2C address by isolating them on separate channels.</p>
+<p>Each channel has pin header interface and also a QWIIC Connector for rapid development.</p>
 <div align="center">
-  <img src="resources/unit_top_v_1_0_0_icp10111_barometric_pressure_sensor.png" style="max-width: 80%; height: auto;" alt="Development Board">
-  <p><em>Development Board</em></p>
+  <img src="resources/unit_top_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" style="max-width: 80%; height: auto;" alt="TCA9548A Multiplexer Module">
+  <p><em>TCA9548A Multiplexer Module</em></p>
 </div>
 <div align="center">
 <h3 id="quick-setup"><a class="header" href="#quick-setup">Quick Setup</a></h3>
@@ -193,29 +195,27 @@
 <div align="center" >
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Description</th></tr></thead><tbody>
-<tr><td>Microcontroller</td><td>8-bit MCU</td></tr>
-<tr><td>Memory</td><td>Flash, SRAM, EEPROM</td></tr>
-<tr><td>Clock Speed</td><td>16 MHz</td></tr>
-<tr><td>Power Supply</td><td>USB-C (5V)</td></tr>
-<tr><td>Interfaces</td><td>UART, I2C, SPI, PWM, ADC, GPIO</td></tr>
-<tr><td>LED Matrix</td><td>5x5 RGB LED Matrix</td></tr>
-<tr><td>Connectivity</td><td>USB-C for programming and power</td></tr>
-<tr><td>Form Factor</td><td>UNO-compatible</td></tr>
-<tr><td>Development IDEs</td><td>Arduino IDE, PlatformIO</td></tr>
-<tr><td>Onboard Features</td><td>Integrated LED matrix, programmable LED, reset button</td></tr>
+<tr><td>Main IC</td><td>TCA9548A</td></tr>
+<tr><td>Channels</td><td>8 Bidirectional</td></tr>
+<tr><td>Clock frequency</td><td>Up to 400 kHz</td></tr>
+<tr><td>Power Supply</td><td>Qwiic Connector and pin header</td></tr>
+<tr><td>Interfaces</td><td>I2C Bus and SMBus compatible</td></tr>
 <tr><td>Expansion Port</td><td>I2C connector for sensors and modules</td></tr>
 </tbody></table>
-</div></div>
+</div>
+<p>I2C Address: 0x70 to 0x77</p>
+</div>
 <h2 id="applications"><a class="header" href="#applications">Applications</a></h2>
 <ul>
 <li><strong>Prototyping:</strong> Quickly develop and test ideas.</li>
-<li><strong>Education:</strong> Suitable for learning microcontroller basics.</li>
-<li><strong>Wearables:</strong> Compact and versatile for wearable devices.</li>
-<li><strong>Displays:</strong> Use the LED matrix for simple visual output.</li>
+<li><strong>Address Conflict Resolution:</strong> Interfacing with multiple sensors possessing identical, fixed I2C addresses.</li>
+<li><strong>Voltage Level Shifting:</strong> Interfacing 5V microcontrollers with 3.3V peripheral sensors.</li>
+<li><strong>Bus Capacitance Management:</strong> Isolating bus capacitance by segmenting long I2C buses into smaller, manageable sub-segments.</li>
+<li><strong>System Reliability:</strong> Isolating faulty I2C devices to prevent total bus lockup.</li>
 </ul>
 <h2 id="resources"><a class="header" href="#resources">Resources</a></h2>
 <ul>
-<li><a href="introduction.html#">Schematic Diagram</a></li>
+<li><a href="./hardware/unit_schematic_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf">Schematic Diagram</a></li>
 <li><a href="introduction.html#">Pinout Diagram</a></li>
 <li><a href="introduction.html#">Getting Started Guide</a></li>
 </ul>
@@ -225,38 +225,35 @@ See <a href="LICENSE.html"><code>LICENSE.md</code></a> for details.</p>
 <div align="center">
   <sub>Template created by UNIT Electronics</sub>
 </div><div style="break-before: page; page-break-before: always;"></div><h1 id="hardware-overview"><a class="header" href="#hardware-overview">Hardware Overview</a></h1>
-<blockquote>
-<p><strong>Note of Development:</strong><br />
-This hardware module is under active development. File and directory structures, naming conventions, and documentation formats may change as the design evolves.</p>
-<ul>
-<li>
-<p><strong>File Naming:</strong></p>
-<ul>
-<li>Use capital letters and underscores only.</li>
-<li>Start filenames with <code>unit_&lt;filename&gt;_v_&lt;version&gt;_&lt;description&gt;.&lt;ext&gt;</code>.</li>
-<li>Example: <code>unit_icp10111_barometric_pressure_sensor_v_1_0_0.png</code></li>
-<li>Schematic: <code>schematic_v_&lt;version&gt;_&lt;description&gt;.&lt;ext&gt;</code> (e.g., <code>schematic_v_1_0_0_icp10111_barometric_pressure_sensor.png</code>)</li>
-<li>Topology: <code>unit_topology_v_&lt;version&gt;_&lt;description&gt;.&lt;ext&gt;</code></li>
-<li>Dimensions: <code>unit_dimension_v_&lt;version&gt;_&lt;description&gt;.&lt;ext&gt;</code></li>
-</ul>
-</li>
-<li>
-<p><strong>README Structure:</strong></p>
-<ul>
-<li>Hardware overview</li>
-<li>Pinout and connector layout</li>
-<li>Dimensions and topology</li>
-<li>Functional description</li>
-<li>Applications</li>
-<li>References</li>
-</ul>
-</li>
-</ul>
-<p>Please refer to the latest commit history for updates and changes.</p>
-</blockquote>
 <div align="center">
-<div align="center"><a href="hardware/{{schematic_url}}"><img src="hardware/../resources/Schematics_icon.jpg?raw=false" style="max-width: 500px; height: auto;" alt="Schematic"><br/> Schematic</a></div>
+<div align="center"><a href="hardware/../resources/unit_schematic_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf"><img src="hardware/../resources/Schematics_icon.jpg?raw=false" style="max-width: 500px; height: auto;" alt="Schematic"><br/> Schematic</a></div>
 </div>
+<h2 id="key-technical-specifications"><a class="header" href="#key-technical-specifications">Key Technical Specifications</a></h2>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center"><strong>Parameter</strong></th><th style="text-align: center"><strong>Description</strong></th><th style="text-align: center"><strong>Min</strong></th><th style="text-align: center"><strong>Max</strong></th><th style="text-align: center"><strong>Unit</strong></th></tr></thead><tbody>
+<tr><td style="text-align: center">Vin</td><td style="text-align: center">Input voltage to power on the module</td><td style="text-align: center">1.65</td><td style="text-align: center">5.5</td><td style="text-align: center">V</td></tr>
+<tr><td style="text-align: center">Vih</td><td style="text-align: center">High-level input voltage</td><td style="text-align: center">0.7xVin</td><td style="text-align: center">Vcc+0.5</td><td style="text-align: center">V</td></tr>
+<tr><td style="text-align: center">Vil</td><td style="text-align: center">Low-level input voltage</td><td style="text-align: center">-0.5</td><td style="text-align: center">0.3xVin</td><td style="text-align: center">V</td></tr>
+<tr><td style="text-align: center">Icc</td><td style="text-align: center">Supply Current</td><td style="text-align: center">-100</td><td style="text-align: center">100</td><td style="text-align: center">mA</td></tr>
+<tr><td style="text-align: center">Ii</td><td style="text-align: center">Input Current</td><td style="text-align: center">-0.5</td><td style="text-align: center">7</td><td style="text-align: center">mA</td></tr>
+<tr><td style="text-align: center">Io</td><td style="text-align: center">Output Current</td><td style="text-align: center">-25</td><td style="text-align: center">-</td><td style="text-align: center">mA</td></tr>
+<tr><td style="text-align: center">fscl</td><td style="text-align: center">I2C clock frequency</td><td style="text-align: center">0</td><td style="text-align: center">400</td><td style="text-align: center">kHz</td></tr>
+</tbody></table>
+</div></div>
+<h3 id="i2c-address-selection"><a class="header" href="#i2c-address-selection">I2C Address Selection</a></h3>
+<p>The address is selected via Dip Switch on board:</p>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center"><strong>A2</strong></th><th style="text-align: center"><strong>A1</strong></th><th style="text-align: center"><strong>A0</strong></th><th style="text-align: center"><strong>Address</strong></th></tr></thead><tbody>
+<tr><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">0x70</td></tr>
+<tr><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">0x71</td></tr>
+<tr><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">0x72</td></tr>
+<tr><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">0x73</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">0x74</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">0x75</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">0x76</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">0x77</td></tr>
+</tbody></table>
+</div></div>
 <h2 id="pinout"><a class="header" href="#pinout">Pinout</a></h2>
 <div align="center">
     <div align="center"><a href="hardware/overview.html#"><img src="hardware/../resources/unit_pinout_v_0_0_1_ue0094_icp10111_barometric_pressure_sensor_en.jpg" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
@@ -266,25 +263,6 @@ This hardware module is under active development. File and directory structures,
 <div class="table-wrapper"><table><thead><tr><th>Pin Label</th><th>Function</th><th>Notes</th></tr></thead><tbody>
 <tr><td>VCC</td><td>Power Supply</td><td>3.3V or 5V</td></tr>
 <tr><td>GND</td><td>Ground</td><td>Common ground for all components</td></tr>
-</tbody></table>
-</div></div>
-<h2 id="dimensions"><a class="header" href="#dimensions">Dimensions</a></h2>
-<div align="center">
-<div align="center"><a href="hardware/../resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png"><img src="hardware/../resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
-</div>
-<h2 id="topology"><a class="header" href="#topology">Topology</a></h2>
-<div align="center">
-<div align="center">
-<div align="center"><a href="hardware/../resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png"><img src="hardware/../resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
-<br/>
-<br/>
-<br/>
-<div class="table-wrapper"><table><thead><tr><th>Ref.</th><th>Description</th></tr></thead><tbody>
-<tr><td>IC1</td><td>{{sensor_description}}</td></tr>
-<tr><td>L1</td><td>Power On LED</td></tr>
-<tr><td>U1</td><td>{{regulator_description}}</td></tr>
-<tr><td>JP1</td><td>2.54 mm Castellated Holes</td></tr>
-<tr><td>J1</td><td>QWIIC Connector (JST 1 mm pitch) for I2C</td></tr>
 </tbody></table>
 </div></div>
 <h2 id="pin--connector-layout"><a class="header" href="#pin--connector-layout">Pin &amp; Connector Layout</a></h2>
@@ -298,15 +276,60 @@ This hardware module is under active development. File and directory structures,
 <blockquote>
 <p><strong>Note:</strong> The module also includes a Qwiic/STEMMA QT connector carrying the same four signals (VCC, GND, SDA, SCL) for effortless daisy-chaining.</p>
 </blockquote>
-<h2 id="functional-description"><a class="header" href="#functional-description">Functional Description</a></h2>
-<p>{{functional_description}}</p>
-<h2 id="applications-1"><a class="header" href="#applications-1">Applications</a></h2>
-<p>{{applications_list}}</p>
+<h2 id="topology"><a class="header" href="#topology">Topology</a></h2>
+<div align="center">
+<div align="center"><a href="hardware/../resources/unit_topology_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png"><img src="hardware/../resources/unit_topology_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
+<br/>
+<br/>
+<br/>
+<div class="table-wrapper"><table><thead><tr><th>Ref.</th><th>Description</th></tr></thead><tbody>
+<tr><td>IC1</td><td>TCA9548A</td></tr>
+<tr><td>J1 &amp; J6</td><td>Main I2C device QWIIC connector</td></tr>
+<tr><td>J2-J5 &amp; J7-J10</td><td>QWIIC Connector for each channel</td></tr>
+<tr><td>JP1 &amp; JP2</td><td>2.54 mm Castellated Holes</td></tr>
+<tr><td>JP3</td><td>Voltage selector for all channels</td></tr>
+<tr><td>SW1</td><td>Dip Switch for address selection</td></tr>
+<tr><td>SB1</td><td>SDA Pull-Up Bridge</td></tr>
+<tr><td>SB2</td><td>SCL Pull-Up Bridge</td></tr>
+<tr><td>SB3</td><td>Solder bridge to join VCC2 with VCC</td></tr>
+<tr><td>SB4</td><td>Solder bridge to join VCC1 with VCC</td></tr>
+<tr><td>SB5</td><td>Solder bridge address selection</td></tr>
+</tbody></table>
+</div></div>
+<h2 id="dimensions"><a class="header" href="#dimensions">Dimensions</a></h2>
+<div align="center">
+<div align="center"><a href="hardware/../resources/unit_dimension_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png"><img src="hardware/../resources/unit_dimension_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
+</div>
 <h1 id="references"><a class="header" href="#references">References</a></h1>
 <ul>
-<li><a href="hardware/%7B%7Bdatasheet_url%7D%7D">{{datasheet_name}}</a></li>
+<li><a href="https://www.ti.com/lit/ds/symlink/tca9548a.pdf?ts=1765490049577&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252Fes-mx%252FTCA9548A">TCA9548A Datasheet</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="pinout-1"><a class="header" href="#pinout-1">Pinout</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="key-technical-specifications-1"><a class="header" href="#key-technical-specifications-1">Key Technical Specifications</a></h1>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center"><strong>Parameter</strong></th><th style="text-align: center"><strong>Description</strong></th><th style="text-align: center"><strong>Min</strong></th><th style="text-align: center"><strong>Max</strong></th><th style="text-align: center"><strong>Unit</strong></th></tr></thead><tbody>
+<tr><td style="text-align: center">Vin</td><td style="text-align: center">Input voltage to power on the module</td><td style="text-align: center">1.65</td><td style="text-align: center">5.5</td><td style="text-align: center">V</td></tr>
+<tr><td style="text-align: center">Vih</td><td style="text-align: center">High-level input voltage</td><td style="text-align: center">0.7xVin</td><td style="text-align: center">Vcc+0.5</td><td style="text-align: center">V</td></tr>
+<tr><td style="text-align: center">Vil</td><td style="text-align: center">Low-level input voltage</td><td style="text-align: center">-0.5</td><td style="text-align: center">0.3xVin</td><td style="text-align: center">V</td></tr>
+<tr><td style="text-align: center">Icc</td><td style="text-align: center">Supply Current</td><td style="text-align: center">-100</td><td style="text-align: center">100</td><td style="text-align: center">mA</td></tr>
+<tr><td style="text-align: center">Ii</td><td style="text-align: center">Input Current</td><td style="text-align: center">-0.5</td><td style="text-align: center">7</td><td style="text-align: center">mA</td></tr>
+<tr><td style="text-align: center">Io</td><td style="text-align: center">Output Current</td><td style="text-align: center">-25</td><td style="text-align: center">-</td><td style="text-align: center">mA</td></tr>
+<tr><td style="text-align: center">fscl</td><td style="text-align: center">I2C clock frequency</td><td style="text-align: center">0</td><td style="text-align: center">400</td><td style="text-align: center">kHz</td></tr>
+</tbody></table>
+</div></div>
+<h3 id="i2c-address-selection-1"><a class="header" href="#i2c-address-selection-1">I2C Address Selection</a></h3>
+<p>The address is selected via Dip Switch on board:</p>
+<div align="center">
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center"><strong>A2</strong></th><th style="text-align: center"><strong>A1</strong></th><th style="text-align: center"><strong>A0</strong></th><th style="text-align: center"><strong>Address</strong></th></tr></thead><tbody>
+<tr><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">0x70</td></tr>
+<tr><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">0x71</td></tr>
+<tr><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">0x72</td></tr>
+<tr><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">0x73</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">L</td><td style="text-align: center">0x74</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">H</td><td style="text-align: center">0x75</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">L</td><td style="text-align: center">0x76</td></tr>
+<tr><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">H</td><td style="text-align: center">0x77</td></tr>
+</tbody></table>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="pinout-1"><a class="header" href="#pinout-1">Pinout</a></h1>
 <div align="center">
     <div align="center"><a href="hardware/pinout.html#"><img src="hardware/../resources/unit_pinout_v_0_0_1_ue0094_icp10111_barometric_pressure_sensor_en.jpg" style="max-width: 500px; height: auto;" alt="Pinout"><br/> Pinout</a></div>
     <br/>
@@ -315,23 +338,6 @@ This hardware module is under active development. File and directory structures,
 <div class="table-wrapper"><table><thead><tr><th>Pin Label</th><th>Function</th><th>Notes</th></tr></thead><tbody>
 <tr><td>VCC</td><td>Power Supply</td><td>3.3V or 5V</td></tr>
 <tr><td>GND</td><td>Ground</td><td>Common ground for all components</td></tr>
-</tbody></table>
-</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="dimensions-1"><a class="header" href="#dimensions-1">Dimensions</a></h1>
-<div align="center">
-<div align="center"><a href="hardware/../resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png"><img src="hardware/../resources/unit_dimension_v_1_0_0_icp10111_barometric_pressure_sensor.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
-</div><div style="break-before: page; page-break-before: always;"></div><h1 id="topology-1"><a class="header" href="#topology-1">Topology</a></h1>
-<div align="center">
-<div align="center">
-<div align="center"><a href="hardware/../resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png"><img src="hardware/../resources/unit_topology_V_0_0_1_ue0099_Sensor_Touch.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
-<br/>
-<br/>
-<br/>
-<div class="table-wrapper"><table><thead><tr><th>Ref.</th><th>Description</th></tr></thead><tbody>
-<tr><td>IC1</td><td>{{sensor_description}}</td></tr>
-<tr><td>L1</td><td>Power On LED</td></tr>
-<tr><td>U1</td><td>{{regulator_description}}</td></tr>
-<tr><td>JP1</td><td>2.54 mm Castellated Holes</td></tr>
-<tr><td>J1</td><td>QWIIC Connector (JST 1 mm pitch) for I2C</td></tr>
 </tbody></table>
 </div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="pin--connector-layout-1"><a class="header" href="#pin--connector-layout-1">Pin &amp; Connector Layout</a></h1>
 <div class="table-wrapper"><table><thead><tr><th>Pin</th><th>Voltage Level</th><th>Function</th></tr></thead><tbody>
@@ -344,13 +350,32 @@ This hardware module is under active development. File and directory structures,
 <blockquote>
 <p><strong>Note:</strong> The module also includes a Qwiic/STEMMA QT connector carrying the same four signals (VCC, GND, SDA, SCL) for effortless daisy-chaining.</p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="functional-description-1"><a class="header" href="#functional-description-1">Functional Description</a></h1>
-<p>{{functional_description}}</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="applications-2"><a class="header" href="#applications-2">Applications</a></h1>
-<p>{{applications_list}}</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="topology-1"><a class="header" href="#topology-1">Topology</a></h1>
+<div align="center">
+<div align="center"><a href="hardware/../resources/unit_topology_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png"><img src="hardware/../resources/unit_topology_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" style="max-width: 500px; height: auto;" alt="Topology"><br/> Topology</a></div>
+<br/>
+<br/>
+<br/>
+<div class="table-wrapper"><table><thead><tr><th>Ref.</th><th>Description</th></tr></thead><tbody>
+<tr><td>IC1</td><td>TCA9548A</td></tr>
+<tr><td>J1 &amp; J6</td><td>Main I2C device QWIIC connector</td></tr>
+<tr><td>J2-J5 &amp; J7-J10</td><td>QWIIC Connector for each channel</td></tr>
+<tr><td>JP1 &amp; JP2</td><td>2.54 mm Castellated Holes</td></tr>
+<tr><td>JP3</td><td>Voltage selector for all channels</td></tr>
+<tr><td>SW1</td><td>Dip Switch for address selection</td></tr>
+<tr><td>SB1</td><td>SDA Pull-Up Bridge</td></tr>
+<tr><td>SB2</td><td>SCL Pull-Up Bridge</td></tr>
+<tr><td>SB3</td><td>Solder bridge to join VCC2 with VCC</td></tr>
+<tr><td>SB4</td><td>Solder bridge to join VCC1 with VCC</td></tr>
+<tr><td>SB5</td><td>Solder bridge address selection</td></tr>
+</tbody></table>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="dimensions-1"><a class="header" href="#dimensions-1">Dimensions</a></h1>
+<div align="center">
+<div align="center"><a href="hardware/../resources/unit_dimension_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png"><img src="hardware/../resources/unit_dimension_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" style="max-width: 500px; height: auto;" alt="Dimensions"><br/> Dimensions</a></div>
+</div>
 <h1 id="references-1"><a class="header" href="#references-1">References</a></h1>
 <ul>
-<li><a href="hardware/%7B%7Bdatasheet_url%7D%7D">{{datasheet_name}}</a></li>
+<li><a href="https://www.ti.com/lit/ds/symlink/tca9548a.pdf?ts=1765490049577&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252Fes-mx%252FTCA9548A">TCA9548A Datasheet</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
 <p>Welcome to the project! This guide will help you set up your development environment and start working with the board.</p>

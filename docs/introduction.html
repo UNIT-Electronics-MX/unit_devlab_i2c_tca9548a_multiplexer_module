@@ -177,10 +177,12 @@
                     <main>
                         <h1 id="devlab-i2c-tca9548a-multiplexer-module"><a class="header" href="#devlab-i2c-tca9548a-multiplexer-module">DevLab: I2C TCA9548A Multiplexer Module</a></h1>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
-<p>This is a modular development board based on a popular microcontroller, designed for rapid prototyping and educational use. It features flexible power options, modern connectivity, and user-friendly interfaces. An integrated LED matrix allows for simple visual feedback and display.</p>
+<p>The TCA9548A is a 1-to-8 bidirectional translating switch controlled via the I2C bus. It is designed to resolve I2C address conflicts and expand the fan-out capability of a primary I2C bus master.</p>
+<p>The device consists of eight separate downstream channels (SCL0/SDA0 through SCL7/SDA7) that can be selected individually or in any combination via a programmable Dip Switch. This allows a master device to communicate with multiple peripheral devices sharing the same I2C address by isolating them on separate channels.</p>
+<p>Each channel has pin header interface and also a QWIIC Connector for rapid development.</p>
 <div align="center">
-  <img src="resources/unit_top_v_1_0_0_icp10111_barometric_pressure_sensor.png" style="max-width: 80%; height: auto;" alt="Development Board">
-  <p><em>Development Board</em></p>
+  <img src="resources/unit_top_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.png" style="max-width: 80%; height: auto;" alt="TCA9548A Multiplexer Module">
+  <p><em>TCA9548A Multiplexer Module</em></p>
 </div>
 <div align="center">
 <h3 id="quick-setup"><a class="header" href="#quick-setup">Quick Setup</a></h3>
@@ -192,29 +194,27 @@
 <div align="center" >
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <div class="table-wrapper"><table><thead><tr><th>Feature</th><th>Description</th></tr></thead><tbody>
-<tr><td>Microcontroller</td><td>8-bit MCU</td></tr>
-<tr><td>Memory</td><td>Flash, SRAM, EEPROM</td></tr>
-<tr><td>Clock Speed</td><td>16 MHz</td></tr>
-<tr><td>Power Supply</td><td>USB-C (5V)</td></tr>
-<tr><td>Interfaces</td><td>UART, I2C, SPI, PWM, ADC, GPIO</td></tr>
-<tr><td>LED Matrix</td><td>5x5 RGB LED Matrix</td></tr>
-<tr><td>Connectivity</td><td>USB-C for programming and power</td></tr>
-<tr><td>Form Factor</td><td>UNO-compatible</td></tr>
-<tr><td>Development IDEs</td><td>Arduino IDE, PlatformIO</td></tr>
-<tr><td>Onboard Features</td><td>Integrated LED matrix, programmable LED, reset button</td></tr>
+<tr><td>Main IC</td><td>TCA9548A</td></tr>
+<tr><td>Channels</td><td>8 Bidirectional</td></tr>
+<tr><td>Clock frequency</td><td>Up to 400 kHz</td></tr>
+<tr><td>Power Supply</td><td>Qwiic Connector and pin header</td></tr>
+<tr><td>Interfaces</td><td>I2C Bus and SMBus compatible</td></tr>
 <tr><td>Expansion Port</td><td>I2C connector for sensors and modules</td></tr>
 </tbody></table>
-</div></div>
+</div>
+<p>I2C Address: 0x70 to 0x77</p>
+</div>
 <h2 id="applications"><a class="header" href="#applications">Applications</a></h2>
 <ul>
 <li><strong>Prototyping:</strong> Quickly develop and test ideas.</li>
-<li><strong>Education:</strong> Suitable for learning microcontroller basics.</li>
-<li><strong>Wearables:</strong> Compact and versatile for wearable devices.</li>
-<li><strong>Displays:</strong> Use the LED matrix for simple visual output.</li>
+<li><strong>Address Conflict Resolution:</strong> Interfacing with multiple sensors possessing identical, fixed I2C addresses.</li>
+<li><strong>Voltage Level Shifting:</strong> Interfacing 5V microcontrollers with 3.3V peripheral sensors.</li>
+<li><strong>Bus Capacitance Management:</strong> Isolating bus capacitance by segmenting long I2C buses into smaller, manageable sub-segments.</li>
+<li><strong>System Reliability:</strong> Isolating faulty I2C devices to prevent total bus lockup.</li>
 </ul>
 <h2 id="resources"><a class="header" href="#resources">Resources</a></h2>
 <ul>
-<li><a href="#">Schematic Diagram</a></li>
+<li><a href="./hardware/unit_schematic_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf">Schematic Diagram</a></li>
 <li><a href="#">Pinout Diagram</a></li>
 <li><a href="#">Getting Started Guide</a></li>
 </ul>
