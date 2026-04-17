@@ -1,16 +1,6 @@
 
 # DevLab: I2C TCA9548A Multiplexer Module
-<!-- Exception:
 
-The PULSAR development board line does not use the DevLab: prefix.
-
-Format: PULSAR [MCU/Model]
-
-Examples: PULSAR C6, PULSAR H2, PULSAR RP2350
-
-The JUN R3 board also does not use DevLab:
-
-Example: JUN R3 -->
 
 ## Introduction
 
