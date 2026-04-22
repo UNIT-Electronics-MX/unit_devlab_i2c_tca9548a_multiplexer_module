@@ -43,17 +43,17 @@ This document explain the example code test for work with the I2C Multiplexor, w
     ```sh
     git clone https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_tca9548a_multiplexer_module/tree/main
     ```
-2. Follow the setup instructions in the `docs/` directory.
-3. Open the folder inside of the next direction software/examples/cpp_examples/TCA9548A
-4. Test the TCA9548.ino in Arduino IDE 
+2. Open the folder inside of the next direction software/examples/cpp_examples/TCA9548A
+3. Test the TCA9548.ino in Arduino IDE 
 
 ## Usage
 
 1. Connect the I2C Devices to the TCA9548A multiplexor with the QWIIC connector.
-2. Connect the TCA9548A module to your board
-3. Upload the code example via USB or appropiate conecction to your board.
-4. Open the serial monitor or terminal.
-5. Use commands like `scan`, `capacity`, `read <channel> <addr> <len>`, `write <channel> <addr> <text>`, `setchannel <channel> <address>` to interact with the connected devices
+2. Connect the TCA9548A module to the UNIT PULSAR ESP32 C6
+3. Put the option of the CDC in enabled for can interact with the serial terminal, like in the image listed below ![Setting Up CDC](../../img/cdcenabled.png)
+4. Upload the code example via USB or appropiate conecction to your board.
+5. Open the serial monitor or terminal.
+6. Use commands like `scan`, `capacity`, `read <channel> <addr> <len>`, `write <channel> <addr> <text>`, `setchannel <channel> <address>` to interact with the connected devices
 - Build and flash the firmware as described in the [User Guide](docs/USER_GUIDE.md).
 
 ## Summary 
