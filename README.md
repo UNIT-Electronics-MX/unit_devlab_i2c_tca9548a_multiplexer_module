@@ -2,7 +2,6 @@
 # DevLab: I2C TCA9548A Multiplexer Module
 
 
-## Introduction
 
 The TCA9548A is a 1-to-8 bidirectional translating switch controlled via the I2C bus. It is designed to resolve I2C address conflicts and expand the fan-out capability of a primary I2C bus master.
 
@@ -19,8 +18,8 @@ Each channel has pin header interface and also a QWIIC Connector for rapid devel
 
 ### Quick Setup
 
-[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](#)
-[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](#)
+[<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](https://wiki.uelectronics.com/wiki/unit_devlab_i2c_tca9548a_multiplexer_module)
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](https://unit-electronics-mx.github.io/unit_devlab_i2c_tca9548a_multiplexer_module/hardware/unit_datasheet_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf)
 [<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](#)
 [<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](#)
 
@@ -54,7 +53,7 @@ I2C Address: 0x70 to 0x77
 ## Resources
 
 - [Schematic Diagram](./hardware/unit_schematic_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf)
-- [Pinout Diagram](#)
+- [Pinout Diagram](https://unit-electronics-mx.github.io/unit_devlab_i2c_tca9548a_multiplexer_module/hardware/unit_pinout_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module_en.pdf)
 - [Getting Started Guide](#)
 
 ## 📝 License
