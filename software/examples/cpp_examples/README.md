@@ -41,7 +41,7 @@ This document explain the example code test for work with the I2C Multiplexor, w
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_tca9548a_multiplexer_module/tree/main
+    git clone git@github.com:UNIT-Electronics-MX/unit_devlab_i2c_tca9548a_multiplexer_module.git
     ```
 2. Open the folder inside of the next direction software/examples/cpp_examples/tca9548a
 3. Test the tca9548a.ino in Arduino IDE 
