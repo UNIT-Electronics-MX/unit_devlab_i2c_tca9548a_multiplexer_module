@@ -20,7 +20,7 @@ Each channel has pin header interface and also a QWIIC Connector for rapid devel
 ### Quick Setup
 
 [<img src="https://img.shields.io/badge/Product%20Wiki-blue?style=for-the-badge" alt="Product Wiki">](#)
-[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](#)
+[<img src="https://img.shields.io/badge/Datasheet-green?style=for-the-badge" alt="Datasheet">](./hardware/unit_datasheet_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf)
 [<img src="https://img.shields.io/badge/Buy%20Now-orange?style=for-the-badge" alt="Buy Now">](#)
 [<img src="https://img.shields.io/badge/Getting%20Started-purple?style=for-the-badge" alt="Getting Started">](#)
 
@@ -54,7 +54,7 @@ I2C Address: 0x70 to 0x77
 ## Resources
 
 - [Schematic Diagram](./hardware/unit_schematic_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module.pdf)
-- [Pinout Diagram](#)
+- [Pinout Diagram](./hardware/unit_pinout_v_1_0_0_ue0114_devlab_i2c_tca9548a_multiplexer_module_en.pdf)
 - [Getting Started Guide](#)
 
 ## 📝 License
