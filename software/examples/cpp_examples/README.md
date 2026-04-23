@@ -43,21 +43,30 @@ This document explain the example code test for work with the I2C Multiplexor, w
     ```sh
     git clone https://github.com/UNIT-Electronics-MX/unit_devlab_i2c_tca9548a_multiplexer_module/tree/main
     ```
-2. Open the folder inside of the next direction software/examples/cpp_examples/TCA9548A
-3. Test the TCA9548.ino in Arduino IDE 
+2. Open the folder inside of the next direction software/examples/cpp_examples/tca9548a
+3. Test the tca9548a.ino in Arduino IDE 
 
 ## Usage
 
 1. Connect the I2C Devices to the TCA9548A multiplexor with the QWIIC connector.
+<div style="text-align: center;">
+<img src="../../../hardware/resources/img/diagram.png" alt="Connection Diagram" width="500">
+</div>
+
 2. Connect the TCA9548A module to the UNIT PULSAR ESP32 C6
-3. Put the option of the CDC in enabled for can interact with the serial terminal, like in the image listed below ![Setting Up CDC](../../img/cdcenabled.png)
+
+3. Enable CDC (Communication Device Class) to interact with the serial terminal, as shown in the image below:
+<div style="text-align: center;">
+   <img src="../../../hardware/resources/img/cdcenabled.png" alt="Setting Up CDC" width="500">
+</div>
+
 4. Upload the code example via USB or appropiate conecction to your board.
 5. Open the serial monitor or terminal.
 6. Use commands like `scan`, `capacity`, `read <channel> <addr> <len>`, `write <channel> <addr> <text>`, `setchannel <channel> <address>` to interact with the connected devices
-- Build and flash the firmware as described in the [User Guide](docs/USER_GUIDE.md).
+- Build and flash the firmware as described in the [User Guide](https://wiki.uelectronics.com/tutoriales/inicio-arduino).
 
 ## Summary 
 The firmware provides a robust, interactive way totes, use and debug devices connected to the `TCA9548A UNIT Module` on Arduino IDE platform. It handles device detection, setting up of channels listed in the device via specific address of the devices attached to this, making it ideal for expand the devices that we can connect to a microcontroller with a few pins and for learning, prototyping, or diagnostics.
 ## Support
 
-For questions or issues, please open an issue on GitHub.
+For questions or issues, please open an issue on GitHub. 
