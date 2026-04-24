@@ -1,63 +1,31 @@
-// --------------------------------------
-// i2c_scanner
-//TCA9545A 
-/* 
- *  16/AGO/2021
- */
-
+// I2C Scanner - TCA9548A Multiplexer
 #include <Wire.h>
 
-#define ADD 0x70 // Direccion del Multiplexor
+#define TCA_ADDR 0x70
+#define TCA_PORTS 4
+
+void tcaselect(uint8_t port) {
+  Wire.beginTransmission(TCA_ADDR);
+  Wire.write(1 << port);
+  Wire.endTransmission();
+}
 
 void setup() {
-  Wire.begin(6,7);
-
+  Wire.begin(6, 7);
   Serial.begin(115200);
-  Serial.println("\nI2C Scanner");
 }
-void tcaselect(uint8_t i) {
-  if (i > 3) return;
- 
-  Wire.beginTransmission(ADD);
-  Wire.write(1 << i);
-  Wire.endTransmission();  
-}
+
 void loop() {
-  int nDevices = 0;
-
-  Serial.println("Scanning...");
-for(byte t = 0; t < 4;t++){
-      tcaselect(t);
-      Serial.print("TCA Port #"); Serial.println(t);
-      
-  for (byte address = 1; address < 127; ++address) {
-    // The i2c_scanner uses the return value of
-    // the Write.endTransmisstion to see if
-    // a device did acknowledge to the address.
-    if (address == ADD) continue;
-    Wire.beginTransmission(address);
-    byte error = Wire.endTransmission();
-
-    if (error == 0) {
-      Serial.print("I2C device found at address 0x");
-      if (address < 16) {
-        Serial.print("0");
-      }
-      Serial.print(address, HEX);
-      Serial.println("  !");
-
-      ++nDevices;
-    } else if (error == 4) {
-      Serial.print("Unknown error at address 0x");
-      if (address < 16) {
-        Serial.print("0");
-      }
-      Serial.println(address, HEX);
+  for (byte t = 0; t < TCA_PORTS; t++) {
+    tcaselect(t);
+    Serial.print("Port #"); Serial.println(t);
+    for (byte addr = 1; addr < 127; addr++) {
+      if (addr == TCA_ADDR) continue;
+      Wire.beginTransmission(addr);
+      if (Wire.endTransmission() == 0)
+        Serial.printf("  0x%02X\n", addr);
     }
-   }
- }
-  
-    Serial.println("done\n");
-  
-  delay(1000); // Wait 5 seconds for next scan
+  }
+  Serial.println("done\n");
+  delay(1000);
 }

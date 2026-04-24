@@ -9,6 +9,12 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   copy-hardware-docs:
@@ -40,6 +46,17 @@ jobs:
         chmod +x .github/scripts/build_docs.sh
         .github/scripts/build_docs.sh
         
+    - name: Validate docs structure
+      run: |
+        echo "Checking required docs structure..."
+        for f in docs/index.html docs/hardware/README.md; do
+          if [ ! -f "$f" ]; then
+            echo "ERROR: Missing required file: $f"
+            exit 1
+          fi
+        done
+        echo "Docs structure OK"
+
     - name: Commit and push changes
       if: github.event_name != 'pull_request'
       run: |
@@ -47,7 +64,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add docs/
         if [ -n "$(git status --porcelain)" ]; then
-          git commit -m "Auto-update hardware documentation [skip ci]"
+          git commit -m "fix(docs): update docs structure from hardware changes [skip ci]"
           git push
         else
           echo "No changes to commit"
